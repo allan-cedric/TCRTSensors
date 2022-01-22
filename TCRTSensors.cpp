@@ -1,10 +1,10 @@
-// -- Implementação da classe TCRTSensor --
+// -- Implementação da classe TCRTSensors --
 // -- Plataforma: Arduino --
 // -- Autor: Allan Cedric --
 
 #include "TCRTSensors.h"
 
-TCRTSensor::TCRTSensor(uint8_t *pins, uint8_t numSensors)
+TCRTSensors::TCRTSensors(uint8_t *pins, uint8_t numSensors)
 {
     _pins = pins;
     _numSensors = numSensors;
@@ -14,7 +14,7 @@ TCRTSensor::TCRTSensor(uint8_t *pins, uint8_t numSensors)
     _reflectance = (_minRead + _maxRead) / 3;
 }
 
-void TCRTSensor::calibrate()
+void TCRTSensors::calibrate()
 {
     uint16_t read = analogRead(_pins[0]);
     _minRead = read;
@@ -30,12 +30,12 @@ void TCRTSensor::calibrate()
     _reflectance = (_minRead + _maxRead) / 3;
 }
 
-uint16_t TCRTSensor::readLineWhite()
+uint16_t TCRTSensors::readLineWhite()
 {
     uint16_t value = 0, count = 0;
     for (uint8_t i = 0; i < _numSensors; i++)
     {
-        if (analogRead(_pins[i]) > _reflectance)
+        if (analogRead(_pins[i]) > (int)_reflectance)
         {
             value += ((_numSensors - 1 - i) * 150);
             count++;
@@ -46,12 +46,12 @@ uint16_t TCRTSensor::readLineWhite()
     return _lastPosition;
 }
 
-uint16_t TCRTSensor::readLineBlack()
+uint16_t TCRTSensors::readLineBlack()
 {
     uint16_t value = 0, count = 0;
     for (uint8_t i = 0; i < _numSensors; i++)
     {
-        if (analogRead(_pins[i]) < _reflectance)
+        if (analogRead(_pins[i]) < (int)_reflectance)
         {
             value += ((_numSensors - 1 - i) * 150);
             count++;

@@ -8,7 +8,7 @@
 // --- Bibliotecas ---
 #include <Arduino.h>
 
-class TCRTSensor
+class TCRTSensors
 {
 private:
     uint8_t *_pins;         // Pinos
@@ -25,7 +25,7 @@ public:
         @param  pins        Pinos
         @param  numSensors  Número de sensores
     */
-    TCRTSensor(uint8_t *pins, uint8_t numSensors);
+    TCRTSensors(uint8_t *pins, uint8_t numSensors);
 
     /*!
         @brief  Calibração dos sensores.
