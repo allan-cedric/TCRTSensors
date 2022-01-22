@@ -1,9 +1,9 @@
 ## TCRT5000 Sensor Array Library (C/C++)
 * Library to use the TCRT5000 Sensor Array (Analog).
    
-|   ![QRE1113](./QRE1113.jpg)    |
-| :----------------------------: |
-| *SparkFun QRE1113 Line Sensor* |
+|   ![QRE1113](./TCRT5000-5-way-5.jpg)    |
+| :-------------------------------------: |
+| *TCRT5000 Sensor Array* |
 
 ## How to use ?   
 * Include the library and call the constructor `TCRTSensors`:
