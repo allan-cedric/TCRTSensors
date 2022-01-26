@@ -8,6 +8,9 @@ TCRTSensors::TCRTSensors(uint8_t *pins, uint8_t numSensors)
 {
     _pins = pins;
     _numSensors = numSensors;
+    for (uint8_t i = 0; i < _numSensors; i++)
+        pinMode(_pins[i], INPUT);
+        
     _lastPosition = 150; // Suponha que o robô já está no meio da linha
     _minRead = 0;
     _maxRead = 1023;
