@@ -9,9 +9,11 @@
 * Include the library and call the constructor `TCRTSensors`:
 ```C++
 #include "TCRTSensors.h"
+
+#define NUM_TCRT_SENSORS 5
  
 uint8_t tcrtPins = {A0, A1, A2, A3, A4};
-TCRTSensors tcrt(tcrtPins, 5);
+TCRTSensors tcrt(tcrtPins, NUM_TCRT_SENSORS);
 
 void setup()
 {
@@ -29,6 +31,7 @@ void loop()
 ...
 uint16_t pos = tcrt.readLineWhite(); // Relative position in relation to white line. 
                                      // For black line, use readLineBlack.
+uint16_t error = pos - ((NUM_TCRT_SENSORS - 1) * 150) / 2;
 ...
 }
 ```
